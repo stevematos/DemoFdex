@@ -26,7 +26,7 @@ SECRET_KEY = '8hfttq(!89%z$w6r$x_+yc9$-vd1@6qv3lwf6y!g)y8wih+539'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['demofdex.herokuapp.com']
+ALLOWED_HOSTS = ['localhost','127.0.0.1','demofdex.herokuapp.com']
 
 # Application definition
 
