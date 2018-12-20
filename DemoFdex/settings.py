@@ -41,6 +41,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -132,3 +133,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = 'demofdex@gmail.com'
 EMAIL_HOST_PASSWORD = 'Warcraft.3'
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

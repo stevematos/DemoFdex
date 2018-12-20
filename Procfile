@@ -1,0 +1,1 @@
+web: gunicorn DemoFdex.wsgi --timeout 1000 --keep-alive 5
