@@ -8,6 +8,6 @@ from django.urls import reverse_lazy
 
 class RegistroUsuario(CreateView):
     model = User
-    template_name = "usuario/usuario_registrar.html"
+    template_name = "registro.html"
     form_class = RegistroForm
     success_url = "/"

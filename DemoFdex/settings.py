@@ -24,9 +24,10 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = '8hfttq(!89%z$w6r$x_+yc9$-vd1@6qv3lwf6y!g)y8wih+539'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# DEBUG = False
+DEBUG = bool(os.environ.get('DJANGO_DEBUG', True))
 
-ALLOWED_HOSTS = ['localhost','127.0.0.1','demofdex.herokuapp.com']
+ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'demofdex.herokuapp.com']
 
 # Application definition
 
@@ -126,6 +127,7 @@ os.makedirs(STATIC_TMP, exist_ok=True)
 os.makedirs(STATIC_ROOT, exist_ok=True)
 
 LOGIN_REDIRECT_URL = reverse_lazy('usuario:inicio_usuario')
+LOGOUT_REDIRECT_URL = reverse_lazy('usuario:login')
 
 EMAIL_USE_TLS = True
 EMAIL_HOST = 'smtp.gmail.com'

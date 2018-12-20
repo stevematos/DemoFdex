@@ -1,7 +1,5 @@
 {% extends 'base/base.html' %}
 {% block titulo %}Registro{% endblock %}
-{% block navegador %}
-{% endblock %}
 {% block contenido %}
 <form method="post">
 	{% csrf_token %}
@@ -12,9 +10,10 @@
 		<div class="col-md-2 ">
             <button class="btn btn-primary "type="submit">Guardar</button>
 		</div>
+        <div class="col-md-2 ">
+            <a class="btn btn-primary " href="{% url 'usuario:login' %}">Atras</a>
+        </div>
 	</div>
-	
 </form>
-{% endblock %}
-{% block footer %}
+
 {% endblock %}

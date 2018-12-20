@@ -1,22 +1,25 @@
 from django.urls import path,reverse_lazy
-from django.contrib.auth.views import LoginView
+from django.contrib.auth.views import LoginView,LogoutView
 from django.contrib.auth.views import PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, \
     PasswordResetCompleteView
 from django.views.generic import TemplateView
 from django.contrib.auth.decorators import login_required
 from apps.usuario import views
+from apps.usuario.forms import ValidacionEmail
 
 app_name = 'usuario'
 
 urlpatterns = [
     path('', LoginView.as_view(template_name='index.html'), name='login'),
+    path('logout',LogoutView.as_view(), name='logout'),
     path('inicio', login_required(TemplateView.as_view(template_name='usuario/usuario_index.html')),
          name='inicio_usuario'),
     path('registrar', views.RegistroUsuario.as_view(), name='registrar'),
     path('reset/password_reset',
          PasswordResetView.as_view(template_name='password_reset/password_reset_form.html',
                                    email_template_name='password_reset/password_reset_email.html',
-                                   success_url=reverse_lazy('usuario:password_reset_done')),
+                                   success_url=reverse_lazy('usuario:password_reset_done'),
+                                   form_class=ValidacionEmail),
          name='password_reset'),
     path('password_reset_done',
          PasswordResetDoneView.as_view(template_name='password_reset/password_reset_done.html'),

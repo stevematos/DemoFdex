@@ -1,2 +1,15 @@
-{% extends 'base/base.html' %}
+{% extends 'base/base_usuario.html' %}
+{% load static %}
+{% block extrastatic %}
+    <link rel="stylesheet" href="{% static 'css/usuario_index.css' %}">
+{% endblock %}
 {% block titulo %}Inicio{% endblock %}
+{%  block contenido %}
+    {% if user.is_authenticated %}
+        <img src="{% static 'images/silueta.svg' %}" class="center-block" alt="Silueta de Usuario">
+        <p class="text-center"> Bienvenido,<span id="NombreCompletoUsuario">{{ user.first_name }} {{ user.last_name }} </span>.
+            <br/> Gracias por loguearte.</p>
+    {% else %}
+        <p>Bienvenido, nuevo usuario. Por favor logueese.</p>
+    {% endif %}
+{% endblock %}
